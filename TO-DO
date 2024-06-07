@@ -1,0 +1,17 @@
+Minitalk
+
+what do i need to do?
+i need to make 1 windows comunicate with another
+	how?
+		pid and signals
+
+
+if sig == 1
+char will be 1
+0000 0001
+then its another one
+0000 0011
+then its a zero
+0000 0110
+
+and so on ....
