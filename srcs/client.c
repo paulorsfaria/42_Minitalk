@@ -33,10 +33,10 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 		return 1;
 
-	printf("\n");
-	ft_send_bits(argv[1][0]);	ft_send_bits(argv[1][1]);
-	while (1)
-		printf("%d\n", getpid());
+	printf("%d\n", getpid());
+	ft_send_bits(argv[1][0]);
+	ft_send_bits(argv[1][1]);
+	ft_send_bits(argv[1][2]);
 
 	return 0;
 }

@@ -4,7 +4,7 @@ what do i need to do?
 i need to make 1 windows comunicate with another
 	how?
 		pid and signals
-
+getpid() = gets pid;
 
 if sig == 1
 char will be 1
