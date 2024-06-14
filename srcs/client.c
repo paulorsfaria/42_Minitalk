@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 23:00:32 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/14 02:28:00 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/06/14 05:47:13 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void ft_send_bits(unsigned char bitter, int pid)
 			kill(pid, SIGUSR1);// shall send sig 1
 		else
 			kill(pid, SIGUSR2); //shall send sig 2
-		usleep(500);
+		usleep(150);
 	}
 }
 
@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 			ft_send_bits(argv[2][i], pid);
 			i++;
 		}
+		kill(pid, (SIGUSR1 + SIGUSR2));
 }
 	return(0);
 }
