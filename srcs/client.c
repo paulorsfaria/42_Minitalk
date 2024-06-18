@@ -20,6 +20,7 @@ void ft_send_bits(unsigned char bitter, int pid)
 	int i = 8;
 	while (i--)
 	{
+		//checkes if the bit at the position i is 1 or 0
 		if (bitter >> i & 1)
 			kill(pid, SIGUSR1);// shall send sig 1
 		else
@@ -32,15 +33,23 @@ int main(int argc, char *argv[])
 {
 	if(argc == 3)
 	{
-	int i = 0;
+		int i = 0;
 		int pid = ft_atoi(argv[1]);
+		// sends the string to the ./server
 		while(argv[2][i] != '\0')
 		{
 			ft_send_bits(argv[2][i], pid);
 			i++;
 		}
+		/*
+		 * KILL
+		 * IRONICALLY IT SENDS A SIGNAL AND DOEST
+		 * KILL A PROCESS UNLESS YOU SEND A SIGNAL TO KILL
+		*/
 		kill(pid, (SIGUSR1 + SIGUSR2));
-}
+	}
+	else
+		ft_printf("Wrong number of parameter\nEx:./client <PID> <MESSAGE>");
 	return(0);
 }
 
