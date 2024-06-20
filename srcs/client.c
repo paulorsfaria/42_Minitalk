@@ -46,35 +46,12 @@ int main(int argc, char *argv[])
 		 * IRONICALLY IT SENDS A SIGNAL AND DOEST
 		 * KILL A PROCESS UNLESS YOU SEND A SIGNAL TO KILL
 		*/
-		kill(pid, (SIGUSR1 + SIGUSR2));
+		ft_send_bits('\n', pid);
 	}
 	else
 		ft_printf("Wrong number of parameter\nEx:./client <PID> <MESSAGE>");
 	return(0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

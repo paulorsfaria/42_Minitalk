@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:30 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/14 20:45:18 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:10:17 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void signal_handler(int signal)
 		temp[0] = '\0';
 		flag = 0;
 	}
-//	if(signal == EOF) // #TODO THIS IS WORNG   THIS NEEDS TO KNOW WHEN I SIGNAL ENDS!
-//	{
-//		write(1, temp, t);
-//		flag = 1;
-//		t = 0;
-//		bit = 0b00000000;
-//		return;
-//	 }
+	if(bit == '\n') // #TODO THIS IS WORNG   THIS NEEDS TO KNOW WHEN I SIGNAL ENDS!
+	{
+		write(1, temp, t);
+		free(temp);
+		flag = 1;
+		t = 0;
+		bit = 0b00000000;
+		return;
+	 }
 	//#TODO FIX THIS THE &= ~(1 << i)   IT WORKS BUT NOT SIMPLE ENOUGH
-
 	/*
 	 * HERE I CHECK THE SIGNAL IS SIGUR1 OR SIGUR2 EACH HAS A VALUE 1 OR 0 USING THIS I BUID THE BIT
 	 */
@@ -90,10 +90,8 @@ int main(int argc, char *argv[])
 	{
 		signal(SIGUSR1, signal_handler);
 		signal(SIGUSR2, signal_handler);
-		signal((SIGUSR1 + SIGUSR2), signal_handler);
 		pause();
 	}
-
 	return(0);
 }
 
