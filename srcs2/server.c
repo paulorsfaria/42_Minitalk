@@ -6,7 +6,7 @@
 /*   By: paulo-do <paulo-do@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:30 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/20 10:09:31 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/06/22 05:14:35 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char *ft_join_bits(char *str, unsigned char bit)
 
 void signal_handler(int signal)
 {
-	static unsigned char bit = 0b00000000;
+	static unsigned char bit = 0;
 	static int i = 8;
 	static int flag = 1;
 	static int t = 0;
@@ -70,6 +70,7 @@ void signal_handler(int signal)
 	 */
 		t++;
 		temp = ft_join_bits(temp, bit);
+			ft_printf("%c", bit);
 	 	i = 8;
 	 }
 	usleep(50);
