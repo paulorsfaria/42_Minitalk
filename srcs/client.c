@@ -41,7 +41,8 @@ int main(int argc, char *argv[])
 	{
 		pid = ft_atoi(argv[1]);
 		i = 0;
-
+		if(!argv[2][0])
+			return 0;
 		while(argv[2][i] != '\0')
 		{
 			signal(SIGUSR1, ft_check_delivery);
