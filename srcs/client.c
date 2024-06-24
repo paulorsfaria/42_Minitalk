@@ -6,12 +6,19 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 10:12:32 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/22 01:36:09 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/06/24 13:31:03 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minitalk.h"
+void	ft_check_delivery(int signal)
+{
+	if (signal == SIGUSR1)
+		ft_printf("string delivered\n");
+	else if (signal == SIGUSR2)
+		ft_printf("bit delivered\n");
 
+}
 void	ft_send_bits(char c, int pid)
 {
 	int bit = 8;
@@ -34,16 +41,17 @@ int main(int argc, char *argv[])
 	{
 		pid = ft_atoi(argv[1]);
 		i = 0;
+
 		while(argv[2][i] != '\0')
 		{
-			ft_printf("shiped 1 bit called: %c\n", argv[2][i]);
+			signal(SIGUSR1, ft_check_delivery);
+			signal(SIGUSR2, ft_check_delivery);
 			usleep(20);
 			ft_send_bits(argv[2][i], pid);
 			i++;
 		}
-		ft_send_bits('\0', pid);
 	}
 	else
-		ft_printf("Either you messed up with the args or i messed up\n");
+		ft_printf("\033[0;31mEither you messed up with the args or i messed up\033[0m\n");
     return(0);
 }
