@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 10:12:39 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/24 15:22:55 by paulo-do         ###   ########.fr       */
+/*   Created: 2024/06/25 09:33:03 by paulo-do          #+#    #+#             */
+/*   Updated: 2024/06/25 15:46:02 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minitalk.h"
+#include "../headers/minitalk_bonus.h"
 
 char	*concatenate_an_evaporate(char *str, char c)
 {

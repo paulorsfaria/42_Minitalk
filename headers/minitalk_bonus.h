@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe.c                                             :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 15:40:02 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/10 15:40:02 by paulo-do         ###   ########.fr       */
+/*   Created: 2024/06/25 15:42:37 by paulo-do          #+#    #+#             */
+/*   Updated: 2024/06/25 15:46:09 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-extern char **environ;
+# include "../libraries/libft/includes/libft.h"
 
-int	main(void)
-{
-	char	*path = "/bin/cat";
-	char	*cmd[5];
+# include <stdio.h>
+# include <unistd.h>
+# include <signal.h>
+# include <stdbool.h>
 
-	cmd[0] = "cat";
-	cmd[1] = "pipe.c";
-	cmd[2] = NULL;
-	if (execve(path, cmd, environ) < 0)
-		perror(NULL);
-	printf("if fail, this will be printed\n");
-}
+#endif

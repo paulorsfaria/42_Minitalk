@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 10:12:32 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/24 15:20:05 by paulo-do         ###   ########.fr       */
+/*   Created: 2024/06/25 09:32:53 by paulo-do          #+#    #+#             */
+/*   Updated: 2024/06/25 09:32:53 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minitalk.h"
+#include "../headers/minitalk_bonus.h"
 
 void	ft_check_delivery(int signal)
 {
-	(void)signal;
+	if (signal == SIGUSR1)
+		ft_printf("string delivered\n");
+	else if (signal == SIGUSR2)
+		ft_printf("bit delivered\n");
 }
 
 void	ft_send_bits(char c, int pid)
@@ -54,7 +57,6 @@ int	main(int argc, char *argv[])
 		ft_send_bits('\0', pid);
 	}
 	else
-		ft_printf("\033[0;31mEither you messed up "
-			"with the args or i messed up\033[0m\n");
+		ft_printf("\033[0;31mInvalid number of args\033[0m\n");
 	return (0);
 }
