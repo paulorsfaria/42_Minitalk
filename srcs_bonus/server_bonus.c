@@ -6,13 +6,13 @@
 /*   By: paulo-do <paulo-do@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:33:03 by paulo-do          #+#    #+#             */
-/*   Updated: 2024/06/25 15:46:02 by paulo-do         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:32:57 by paulo-do         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minitalk_bonus.h"
 
-char	*concatenate_an_evaporate(char *str, char c)
+static char	*concatenate_an_evaporate(char *str, char c)
 {
 	int		i;
 	char	*temp;
@@ -32,21 +32,21 @@ char	*concatenate_an_evaporate(char *str, char c)
 	temp[i + 1] = '\0';
 	if (c == '\0')
 	{
-		ft_printf("%s", temp);
+		ft_printf("%s\n", temp);
 		free(temp);
 		return (NULL);
 	}
 	return (temp);
 }
 
-char	*ft_start_char(char *str)
+static char	*ft_start_char(char *str)
 {
 	str = malloc(sizeof(char));
 	str[0] = '\0';
 	return (str);
 }
 
-void	signal_handler(int signal, siginfo_t *info, void *s)
+static void	signal_handler(int signal, siginfo_t *info, void *s)
 {
 	static unsigned char	bit = 0;
 	static int				i = 8;
@@ -82,8 +82,8 @@ int	main(int argc, char *argv[])
 	if (argc == 0)
 	{
 		pid = getpid();
-		printf("The PID is: %d\n", pid);
-		printf("Waiting for a message...\n");
+		ft_printf("The PID is: %d\n", pid);
+		ft_printf("Waiting for a message...\n");
 		sig.sa_sigaction = signal_handler;
 		sigemptyset(&sig.sa_mask);
 		sig.sa_flags = SA_SIGINFO;
@@ -94,6 +94,9 @@ int	main(int argc, char *argv[])
 			pause();
 	}
 	else
-		ft_printf("\033[0;31mError invalid args\033[0m\n");
+	{
+		ft_printf("\033[0;31mError\033[0m\n");
+		ft_printf("\033[0;31mEx:./server\033[0m\n");
+	}
 	return (0);
 }

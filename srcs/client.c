@@ -12,12 +12,12 @@
 
 #include "../headers/minitalk.h"
 
-void	ft_check_delivery(int signal)
+static void	ft_check_delivery(int signal)
 {
 	(void)signal;
 }
 
-void	ft_send_bits(char c, int pid)
+static void	ft_send_bits(char c, int pid)
 {
 	int	bit;
 
@@ -54,7 +54,9 @@ int	main(int argc, char *argv[])
 		ft_send_bits('\0', pid);
 	}
 	else
-		ft_printf("\033[0;31mEither you messed up "
-			"with the args or i messed up\033[0m\n");
+	{
+		ft_printf("\033[0;31mError\033[0m\n");
+		ft_printf("\033[0;31mEx:./client <PID> <MESSAGE>\033[0m\n");
+	}
 	return (0);
 }

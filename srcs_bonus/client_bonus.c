@@ -12,15 +12,15 @@
 
 #include "../headers/minitalk_bonus.h"
 
-void	ft_check_delivery(int signal)
+static void	ft_check_delivery(int signal)
 {
 	if (signal == SIGUSR1)
-		ft_printf("string delivered\n");
-	else if (signal == SIGUSR2)
 		ft_printf("bit delivered\n");
+	else if (signal == SIGUSR2)
+		ft_printf("char delivered\n");
 }
 
-void	ft_send_bits(char c, int pid)
+static void	ft_send_bits(char c, int pid)
 {
 	int	bit;
 
@@ -57,6 +57,9 @@ int	main(int argc, char *argv[])
 		ft_send_bits('\0', pid);
 	}
 	else
-		ft_printf("\033[0;31mInvalid number of args\033[0m\n");
+	{
+		ft_printf("\033[0;31mError\033[0m\n");
+		ft_printf("\033[0;31mEx:./client_bonus <PID> <MESSAGE>\033[0m\n");
+	}
 	return (0);
 }
